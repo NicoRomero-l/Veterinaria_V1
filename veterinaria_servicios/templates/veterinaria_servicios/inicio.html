@@ -5,6 +5,8 @@
     <li><a href="{% url 'categoria_list' %}">Categorías</a> ({{ total_categorias }})</li>
     <li><a href="{% url 'mascota_list' %}">Mascotas</a> ({{ total_mascotas }})</li>
     <li><a href="{% url 'servicio_list' %}">Servicios</a> ({{ total_servicios }})</li>
-    <li><a href="{% url 'cita_list' %}">Citas</a> ({{ total_citas }})</li>
+    {% if perms.veterinaria_servicios.view_cita %}
+        <li><a href="{% url 'cita_list' %}">Citas</a> ({{ total_citas }})</li>
+    {% endif %}
 </ul>
 {% endblock %}

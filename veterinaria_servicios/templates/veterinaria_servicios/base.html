@@ -11,7 +11,9 @@
         <a href="{% url 'categoria_list' %}">Categorías</a>
         <a href="{% url 'mascota_list' %}">Mascotas</a>
         <a href="{% url 'servicio_list' %}">Servicios</a>
-        <a href="{% url 'cita_list' %}">Citas</a>
+        {% if perms.veterinaria_servicios.view_cita %}
+            <a href="{% url 'cita_list' %}">Citas</a>
+        {% endif %}
         {% if user.is_authenticated %}
             <span>{{ user.get_username }}</span>
             <form method="post" action="{% url 'logout' %}">

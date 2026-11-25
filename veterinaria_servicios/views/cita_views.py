@@ -9,11 +9,15 @@ from ..forms import CitaForm
 from ..models import Cita
 
 
+@login_required
+@permission_required("veterinaria_servicios.view_cita", raise_exception=True)
 def cita_list(request):
     registros = Paginator(Cita.objects.select_related("mascota"), 10).get_page(request.GET.get("page"))
     return render(request, "veterinaria_servicios/citas/lista.html", {"registros": registros})
 
 
+@login_required
+@permission_required("veterinaria_servicios.view_cita", raise_exception=True)
 def cita_detail(request, pk):
     registro = get_object_or_404(Cita, pk=pk)
     return render(request, "veterinaria_servicios/citas/detalle.html", {"registro": registro})

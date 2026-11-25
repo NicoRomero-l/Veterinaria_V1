@@ -2,6 +2,7 @@
 {% block contenido %}
 <h1>{{ registro }}</h1>
 <p>Especie: {{ registro.get_especie_display }}</p>
+{% if perms.veterinaria_servicios.view_cita %}
 <h2>Citas</h2>
 <ul>
     {% for relacionado in registro.citas.all %}
@@ -10,5 +11,6 @@
         <li>No hay registros relacionados.</li>
     {% endfor %}
 </ul>
+{% endif %}
 <p><a href="{% url 'mascota_list' %}">Volver a mascotas</a></p>
 {% endblock %}

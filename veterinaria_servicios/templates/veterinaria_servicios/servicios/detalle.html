@@ -3,6 +3,7 @@
 <h1>{{ registro }}</h1>
 <p>Precio: ${{ registro.precio }}</p>
 <p>Categoría: <a href="{{ registro.categoria.get_absolute_url }}">{{ registro.categoria }}</a></p>
+{% if perms.veterinaria_servicios.view_cita %}
 <h2>Citas</h2>
 <ul>
     {% for relacionado in registro.citas.all %}
@@ -11,5 +12,6 @@
         <li>No hay registros relacionados.</li>
     {% endfor %}
 </ul>
+{% endif %}
 <p><a href="{% url 'servicio_list' %}">Volver a servicios</a></p>
 {% endblock %}
