@@ -3,6 +3,7 @@ from ..views import home
 
 urlpatterns = [
     path("", home, name="inicio"),
+    path("", include("veterinaria_servicios.urls.auth_urls")),
     path("categorias/", include("veterinaria_servicios.urls.categoria_urls")),
     path("mascotas/", include("veterinaria_servicios.urls.mascota_urls")),
     path("servicios/", include("veterinaria_servicios.urls.servicio_urls")),
