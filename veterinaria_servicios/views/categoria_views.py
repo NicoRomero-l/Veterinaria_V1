@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models.deletion import ProtectedError
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
 from ..forms import CategoriaForm
@@ -8,7 +9,8 @@ from ..models import Categoria
 
 
 def categoria_list(request):
-    return render(request, "veterinaria_servicios/categorias/lista.html", {"registros": Categoria.objects.all()})
+    registros = Paginator(Categoria.objects.all(), 10).get_page(request.GET.get("page"))
+    return render(request, "veterinaria_servicios/categorias/lista.html", {"registros": registros})
 
 
 def categoria_detail(request, pk):

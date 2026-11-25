@@ -1,0 +1,15 @@
+{% extends "veterinaria_servicios/base.html" %}
+{% block contenido %}
+<h1>Categorías</h1>
+{% if perms.veterinaria_servicios.add_categoria %}
+    <p><a href="{% url 'categoria_create' %}">Nueva categoría</a></p>
+{% endif %}
+<ul>
+    {% for registro in registros %}
+        <li><a href="{{ registro.get_absolute_url }}">{{ registro }}</a></li>
+    {% empty %}
+        <li>No hay registros.</li>
+    {% endfor %}
+</ul>
+{% include "veterinaria_servicios/paginacion.html" %}
+{% endblock %}

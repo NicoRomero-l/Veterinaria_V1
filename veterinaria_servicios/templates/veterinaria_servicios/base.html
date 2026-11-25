@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block titulo %}Veterinaria{% endblock %}</title>
+</head>
+<body>
+    <nav aria-label="Navegación principal">
+        <a href="{% url 'inicio' %}">Inicio</a>
+        <a href="{% url 'categoria_list' %}">Categorías</a>
+        <a href="{% url 'mascota_list' %}">Mascotas</a>
+        <a href="{% url 'servicio_list' %}">Servicios</a>
+        <a href="{% url 'cita_list' %}">Citas</a>
+        {% if user.is_authenticated %}
+            <span>{{ user.get_username }}</span>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Salir</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Entrar</a>
+            <a href="{% url 'registro' %}">Registrarse</a>
+        {% endif %}
+    </nav>
+    <main>
+        {% for mensaje in messages %}<p role="status">{{ mensaje }}</p>{% endfor %}
+        {% block contenido %}{% endblock %}
+    </main>
+</body>
+</html>

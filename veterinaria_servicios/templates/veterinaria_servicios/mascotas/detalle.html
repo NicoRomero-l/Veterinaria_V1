@@ -1,0 +1,14 @@
+{% extends "veterinaria_servicios/base.html" %}
+{% block contenido %}
+<h1>{{ registro }}</h1>
+<p>Especie: {{ registro.get_especie_display }}</p>
+<h2>Citas</h2>
+<ul>
+    {% for relacionado in registro.citas.all %}
+        <li><a href="{{ relacionado.get_absolute_url }}">{{ relacionado }}</a></li>
+    {% empty %}
+        <li>No hay registros relacionados.</li>
+    {% endfor %}
+</ul>
+<p><a href="{% url 'mascota_list' %}">Volver a mascotas</a></p>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "veterinaria_servicios/base.html" %}
+{% block contenido %}
+<h1>Mascotas</h1>
+<ul>
+    {% for registro in registros %}
+        <li><a href="{{ registro.get_absolute_url }}">{{ registro }}</a></li>
+    {% empty %}
+        <li>No hay registros.</li>
+    {% endfor %}
+</ul>
+{% include "veterinaria_servicios/paginacion.html" %}
+{% endblock %}

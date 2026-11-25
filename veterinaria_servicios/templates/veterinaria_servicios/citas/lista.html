@@ -1,0 +1,15 @@
+{% extends "veterinaria_servicios/base.html" %}
+{% block contenido %}
+<h1>Citas</h1>
+{% if perms.veterinaria_servicios.add_cita %}
+    <p><a href="{% url 'cita_create' %}">Nueva cita</a></p>
+{% endif %}
+<ul>
+    {% for registro in registros %}
+        <li><a href="{{ registro.get_absolute_url }}">{{ registro }}</a></li>
+    {% empty %}
+        <li>No hay registros.</li>
+    {% endfor %}
+</ul>
+{% include "veterinaria_servicios/paginacion.html" %}
+{% endblock %}

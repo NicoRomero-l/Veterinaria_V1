@@ -1,0 +1,10 @@
+{% extends "veterinaria_servicios/base.html" %}
+{% block contenido %}
+<h1>{{ titulo }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'cita_list' %}">Cancelar</a>
+{% endblock %}

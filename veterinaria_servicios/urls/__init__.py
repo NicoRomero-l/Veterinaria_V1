@@ -1,8 +1,8 @@
 from django.urls import include, path
-from django.views.generic import RedirectView
+from ..views import home
 
 urlpatterns = [
-    path("", RedirectView.as_view(pattern_name="categoria_list"), name="inicio"),
+    path("", home, name="inicio"),
     path("categorias/", include("veterinaria_servicios.urls.categoria_urls")),
     path("mascotas/", include("veterinaria_servicios.urls.mascota_urls")),
     path("servicios/", include("veterinaria_servicios.urls.servicio_urls")),

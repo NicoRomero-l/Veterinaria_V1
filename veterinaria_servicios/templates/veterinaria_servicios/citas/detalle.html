@@ -1,0 +1,21 @@
+{% extends "veterinaria_servicios/base.html" %}
+{% block contenido %}
+<h1>{{ registro }}</h1>
+<p>Fecha: {{ registro.fecha|date:"d/m/Y" }}</p>
+<p>Mascota: <a href="{{ registro.mascota.get_absolute_url }}">{{ registro.mascota }}</a></p>
+<h2>Servicios</h2>
+<ul>
+    {% for relacionado in registro.servicios.all %}
+        <li><a href="{{ relacionado.get_absolute_url }}">{{ relacionado }}</a></li>
+    {% empty %}
+        <li>No hay registros relacionados.</li>
+    {% endfor %}
+</ul>
+{% if perms.veterinaria_servicios.change_cita and user.pk == registro.creado_por_id or user.is_superuser %}
+    <a href="{% url 'cita_update' registro.pk %}">Editar</a>
+{% endif %}
+{% if perms.veterinaria_servicios.delete_cita and user.pk == registro.creado_por_id or user.is_superuser %}
+    <a href="{% url 'cita_delete' registro.pk %}">Eliminar</a>
+{% endif %}
+<p><a href="{% url 'cita_list' %}">Volver a citas</a></p>
+{% endblock %}

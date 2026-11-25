@@ -1,0 +1,10 @@
+{% extends "veterinaria_servicios/base.html" %}
+{% block contenido %}
+<h1>Confirmar eliminación</h1>
+<p>¿Eliminar {{ registro }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar eliminación</button>
+</form>
+<a href="{{ registro.get_absolute_url }}">Cancelar</a>
+{% endblock %}
