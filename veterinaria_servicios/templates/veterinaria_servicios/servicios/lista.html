@@ -1,6 +1,9 @@
 {% extends "veterinaria_servicios/base.html" %}
 {% block contenido %}
 <h1>Servicios</h1>
+{% if perms.veterinaria_servicios.add_servicio %}
+    <p><a href="{% url 'servicio_create' %}">Nuevo servicio</a></p>
+{% endif %}
 <ul>
     {% for registro in registros %}
         <li><a href="{{ registro.get_absolute_url }}">{{ registro }}</a></li>

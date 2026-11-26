@@ -1,6 +1,9 @@
 {% extends "veterinaria_servicios/base.html" %}
 {% block contenido %}
 <h1>Mascotas</h1>
+{% if perms.veterinaria_servicios.add_mascota %}
+    <p><a href="{% url 'mascota_create' %}">Nueva mascota</a></p>
+{% endif %}
 <ul>
     {% for registro in registros %}
         <li><a href="{{ registro.get_absolute_url }}">{{ registro }}</a></li>
