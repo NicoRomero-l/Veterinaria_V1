@@ -1,0 +1,227 @@
+:root {
+    color-scheme: light;
+    --fondo: #f1f7f4;
+    --superficie: #ffffff;
+    --texto: #20362e;
+    --verde: #16634b;
+    --verde-oscuro: #0e4938;
+    --verde-suave: #e4f4ec;
+    --borde: #cbded5;
+    --foco: #2563a6;
+    --error: #a42626;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--verde);
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--verde-oscuro);
+}
+
+:focus-visible {
+    outline: 3px solid var(--foco);
+    outline-offset: 3px;
+}
+
+body > nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem max(1rem, calc((100% - 64rem) / 2));
+    background: var(--verde-oscuro);
+    color: white;
+}
+
+body > nav a,
+body > nav button {
+    display: inline-block;
+    padding: 0.45rem 0.75rem;
+    border-radius: 0.5rem;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+body > nav a:hover,
+body > nav button:hover {
+    background: #266955;
+    color: white;
+}
+
+body > nav span {
+    margin-inline-start: auto;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+body > nav form {
+    margin: 0;
+}
+
+body > nav button {
+    border: 1px solid #a8cdbd;
+    background: transparent;
+}
+
+body > nav :focus-visible {
+    outline-color: #a9eacd;
+}
+
+main {
+    width: min(calc(100% - 2rem), 64rem);
+    margin: 2.5rem auto;
+    padding: clamp(1.25rem, 4vw, 3rem);
+    border: 1px solid var(--borde);
+    border-radius: 1.25rem;
+    background: var(--superficie);
+    box-shadow: 0 12px 32px rgb(22 63 47 / 8%);
+}
+
+h1,
+h2 {
+    color: var(--verde-oscuro);
+    line-height: 1.2;
+}
+
+h1 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+    overflow-wrap: anywhere;
+}
+
+h2 {
+    margin-top: 2rem;
+    font-size: 1.3rem;
+}
+
+main > ul {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0;
+    list-style: none;
+}
+
+main > ul > li {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--borde);
+    border-radius: 0.65rem;
+    background: #f8fbf9;
+    overflow-wrap: anywhere;
+}
+
+main > ul > li:hover {
+    background: var(--verde-suave);
+}
+
+main > a,
+main > nav a {
+    display: inline-block;
+    margin: 0.25rem 0.4rem 0.25rem 0;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--borde);
+    border-radius: 0.5rem;
+    text-decoration: none;
+}
+
+main > a:hover,
+main > nav a:hover {
+    background: var(--verde-suave);
+}
+
+main form {
+    max-width: 32rem;
+    margin-bottom: 1.25rem;
+}
+
+main form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 650;
+}
+
+input,
+select,
+textarea,
+button {
+    font: inherit;
+}
+
+main input:not([type="hidden"]),
+main select,
+main textarea {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #78978a;
+    border-radius: 0.5rem;
+    background: white;
+    color: var(--texto);
+}
+
+main select[multiple] {
+    min-height: 8rem;
+}
+
+main textarea {
+    min-height: 6rem;
+    resize: vertical;
+}
+
+button {
+    padding: 0.6rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    background: var(--verde);
+    color: white;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--verde-oscuro);
+}
+
+.helptext {
+    display: block;
+    margin-top: 0.35rem;
+    color: #455e53;
+    font-size: 0.9rem;
+}
+
+.errorlist {
+    padding-left: 1.25rem;
+    color: var(--error);
+}
+
+[role="status"] {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--borde);
+    border-radius: 0.65rem;
+    background: var(--verde-suave);
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+    main {
+        margin-block: 1rem;
+    }
+
+    body > nav span {
+        margin-inline-start: 0;
+    }
+}
